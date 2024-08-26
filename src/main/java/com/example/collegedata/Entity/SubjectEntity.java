@@ -22,7 +22,7 @@ public class SubjectEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String title;
+    private String subjectName;
 
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "professorId",referencedColumnName = "id")
@@ -43,12 +43,12 @@ public class SubjectEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SubjectEntity that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getTitle(), that.getTitle());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getSubjectName(), that.getSubjectName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle());
+        return Objects.hash(getId(), getSubjectName());
     }
 }
 

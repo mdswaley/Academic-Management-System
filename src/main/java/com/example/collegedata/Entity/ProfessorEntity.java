@@ -21,7 +21,9 @@ public class ProfessorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String tittle;
+    private String name;
+    private Integer yearOfExperience;
+
 
     @OneToMany(mappedBy = "professorId",cascade = CascadeType.ALL)
     private List<SubjectEntity> subjects;
@@ -38,11 +40,11 @@ public class ProfessorEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ProfessorEntity that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getTittle(), that.getTittle());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getYearOfExperience(), that.getYearOfExperience());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTittle());
+        return Objects.hash(getId(), getName(), getYearOfExperience());
     }
 }

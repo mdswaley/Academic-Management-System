@@ -19,7 +19,6 @@ public class ProfessorController {
     public ProfessorEntity addProfessor(@RequestBody ProfessorEntity professorEntity){
         return professorService.addProfessor(professorEntity);
     }
-
     @GetMapping(path = "/{id}")
     public Optional<ProfessorEntity> getProfessor(@PathVariable Long id){
         return professorService.getProfessor(id);
