@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +19,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Student")
-public class StudentEntity {
+@Audited
+public class StudentEntity extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

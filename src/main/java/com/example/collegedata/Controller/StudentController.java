@@ -1,5 +1,6 @@
 package com.example.collegedata.Controller;
 
+import com.example.collegedata.Dto.StudentDto;
 import com.example.collegedata.Entity.StudentEntity;
 import com.example.collegedata.Entity.SubjectEntity;
 import com.example.collegedata.Service.StudentService;
@@ -18,23 +19,23 @@ public class StudentController {
     }
 
     @PostMapping
-    public StudentEntity addStudent(@RequestBody StudentEntity studentEntity){
-        return studentService.addStudent(studentEntity);
+    public StudentDto addStudent(@RequestBody StudentDto studentDto){
+        return studentService.addStudent(studentDto);
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<StudentEntity> getStudent(@PathVariable Long id){
+    public StudentDto getStudent(@PathVariable Long id){
         return studentService.getStudent(id);
     }
 
     @PutMapping(path = "/{stuId}/havingPro/{proId}")
-    public StudentEntity assignStudentToProfessor(@PathVariable Long stuId,
+    public StudentDto assignStudentToProfessor(@PathVariable Long stuId,
                                                       @PathVariable Long proId){
         return studentService.assignStudentToProfessor(stuId,proId);
     }
 
     @PutMapping(path = "/{stuId}/havingSub/{subId}")
-    public StudentEntity assignStudentToSubject(@PathVariable Long stuId,
+    public StudentDto assignStudentToSubject(@PathVariable Long stuId,
                                                 @PathVariable Long subId){
         return studentService.assignStudentToSubject(stuId,subId);
     }

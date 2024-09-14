@@ -1,5 +1,6 @@
 package com.example.collegedata.Controller;
 
+import com.example.collegedata.Dto.ProfessorDto;
 import com.example.collegedata.Entity.ProfessorEntity;
 import com.example.collegedata.Service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +17,16 @@ public class ProfessorController {
     }
 
     @PostMapping
-    public ProfessorEntity addProfessor(@RequestBody ProfessorEntity professorEntity){
-        return professorService.addProfessor(professorEntity);
+    public ProfessorDto addProfessor(@RequestBody ProfessorDto professorDto){
+        return professorService.addProfessor(professorDto);
     }
     @GetMapping(path = "/{id}")
-    public Optional<ProfessorEntity> getProfessor(@PathVariable Long id){
+    public ProfessorDto getProfessor(@PathVariable Long id){
         return professorService.getProfessor(id);
     }
 
     @PutMapping(path = "{proId}/ofSubject/{subId}")
-    public ProfessorEntity assignSubjectToProfessor(@PathVariable Long proId,
+    public ProfessorDto assignSubjectToProfessor(@PathVariable Long proId,
                                                     @PathVariable Long subId){
         return professorService.assignSubjectToProfessor(proId,subId);
     }

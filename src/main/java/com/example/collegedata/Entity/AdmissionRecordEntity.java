@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
 
@@ -14,14 +15,13 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdmissionRecordEntity {
+@Audited
+public class AdmissionRecordEntity extends Auditing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer fees;
-
-    private LocalDate admissionDate;
 
     private String paymentStatus; //paid, pending or partially paid
 

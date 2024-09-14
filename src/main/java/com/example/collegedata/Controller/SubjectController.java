@@ -1,5 +1,6 @@
 package com.example.collegedata.Controller;
 
+import com.example.collegedata.Dto.SubjectDto;
 import com.example.collegedata.Entity.StudentEntity;
 import com.example.collegedata.Entity.SubjectEntity;
 import com.example.collegedata.Service.SubjectService;
@@ -16,11 +17,11 @@ public class SubjectController {
         this.subjectService = subjectService;
     }
     @PostMapping
-    public SubjectEntity addSubject(@RequestBody SubjectEntity subject){
+    public SubjectDto addSubject(@RequestBody SubjectDto subject){
         return subjectService.addSubject(subject);
     }
     @GetMapping(path = "/{id}")
-    public Optional<SubjectEntity> getSubject(@PathVariable Long id){
+    public SubjectDto getSubject(@PathVariable Long id){
         return subjectService.getSubject(id);
     }
 
