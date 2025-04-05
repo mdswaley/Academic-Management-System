@@ -1,10 +1,7 @@
 package com.example.collegedata.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
@@ -16,6 +13,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Audited
+@Builder
+@EqualsAndHashCode
 public class AdmissionRecordEntity extends Auditing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

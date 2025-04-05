@@ -2,10 +2,7 @@ package com.example.collegedata.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.envers.Audited;
 
 import java.time.LocalDate;
@@ -20,6 +17,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "Student")
 @Audited
+@Builder
+@ToString
 public class StudentEntity extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

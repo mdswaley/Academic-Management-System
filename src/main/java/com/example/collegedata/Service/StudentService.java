@@ -7,11 +7,13 @@ import com.example.collegedata.Entity.SubjectEntity;
 import com.example.collegedata.Repository.ProfessorRepo;
 import com.example.collegedata.Repository.StudentRepo;
 import com.example.collegedata.Repository.SubjectRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class StudentService {
     private final StudentRepo studentRepo;
@@ -29,8 +31,17 @@ public class StudentService {
     }
 
     public StudentDto addStudent(StudentDto studentDto){
+        Optional<StudentEntity> student = studentRepo.findByName(studentDto.getName());
+
+        if (student.isPresent()){
+            log.error("Student is present with name: {}",studentDto.getName());
+            throw new RuntimeException("Student with name is not present : "+studentDto.getName());
+        }
+
         StudentEntity studentEntity = modelMapper.map(studentDto,StudentEntity.class);
-        return modelMapper.map(studentRepo.save(studentEntity),StudentDto.class);
+        studentRepo.save(studentEntity);
+        log.info("Successfully added Student.");
+        return modelMapper.map(studentEntity,StudentDto.class);
     }
 
     public StudentDto getStudent(Long id){
